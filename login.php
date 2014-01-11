@@ -7,7 +7,6 @@ set_error_handler(function() {
 });
 
 require 'config.php';
-require 'lib/password.php';
 
 // logout
 if (isset($_GET['logout'])) {
@@ -22,21 +21,11 @@ else if (isset($_POST['username']) && isset($_POST['password']) && !empty($_POST
     $db = json_decode(file_get_contents(FILE_PASS));
     $username = $db->{'user'};
     $password = $db->{'password'};
-    
-    if(password_needs_rehash($password, PASSWORD_BCRYPT)){
-      $password = password_hash($password, PASSWORD_BCRYPT);
-      $db->{'password'} = $password;
-      if(is_writable(FILE_PASS)){
-        $handler = fopen(FILE_PASS, 'w');
-        fwrite($handler, json_encode($db));
-        fclose($handler);
-      }
-      else{
-        $_SESSION['message'] = "Database file \"".FILE_PASS."\" is not writable, please check the file owner and rights.";
-      }
-    }
-    
-    if ($_POST['username'] == $username && password_verify($_POST['password'],$password))
+    /*/
+    $username = 'test';
+    $password = 'test';
+    //*/
+    if ($_POST['username'] == $username && $_POST['password'] == $password)
       $_SESSION['authentificated'] = true;
     else
       $_SESSION['message'] = 'Incorrect username or password.';  

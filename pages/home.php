@@ -8,7 +8,6 @@ use lib\Storage;
 use lib\Network;
 use lib\Rbpi;
 use lib\Users;
-use lib\Temp;
 
 $uptime = Uptime::uptime();
 $ram = Memory::ram();
@@ -23,9 +22,6 @@ for ($i=0; $i<sizeof($hdd); $i++) {
 }
 $network = Network::connections();
 $users = sizeof(Users::connected());
-$temp = Temp::temp();
-
-$external_ip = Rbpi::externalIp();
 
 function icon_alert($alert) {
   echo '<i class="icon-';
@@ -50,8 +46,8 @@ function icon_alert($alert) {
             <i class="icon-home"></i> <?php echo Rbpi::hostname(); ?>
           </div>
           <div class="span4">
-            <i class="icon-map-marker"></i> <?php echo Rbpi::internalIp(); ?>
-            <?php echo ($external_ip != 'Unavailable') ? '<br /><i class="icon-globe"></i> '. $external_ip : '' ; ?>
+            <i class="icon-map-marker"></i> <?php echo Rbpi::internalIp(); ?>(Internal)
+            <br/> <i class="icon-map-marker"></i> <?php echo Rbpi::externalIp(); ?>(External)
           </div>
           <div class="span4">
             <i class="icon-play-circle"></i> Server <?php echo Rbpi::webServer(); ?>
@@ -88,10 +84,6 @@ function icon_alert($alert) {
             </div>
             <div>
               <i class="icon-user"></i> Users <a href="<?php echo DETAILS; ?>#check-users"><span class="badge pull-right"><?php echo $users; ?></span></a>
-            </div>
-            <div>
-              <i class="icon-fire"></i> Temperature <a href="<?php echo DETAILS; ?>#check-temp"><?php echo icon_alert($temp['alert']); ?></a>
-            </div>
             </div>
           </div>
         </div>

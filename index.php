@@ -50,8 +50,8 @@ $page = file_exists($page) ? $page : 'pages'. DIRECTORY_SEPARATOR .'404.php';
     <header>
       <div class="container">
         <a href="<?php echo INDEX; ?>"><img src="img/raspcontrol.png" alt="rbpi" /></a>
-        <h1><a href="<?php echo INDEX; ?>">Raspcontrol</a></h1>
-        <h2>The Raspberry Pi Control Center</h2>
+        <h1><a href="<?php echo INDEX; ?>">RaspControl</a></h1>
+        <h2>Goesi's CGMiner Control Center</h2>
       </div>
     </header>
 
@@ -69,6 +69,7 @@ $page = file_exists($page) ? $page : 'pages'. DIRECTORY_SEPARATOR .'404.php';
 			  <ul class="nav">
 				<li<?php is_active('home'); ?>><a href="<?php echo INDEX; ?>"><i class="icon-home icon-white"></i> Home</a></li>
 				<li<?php is_active('details'); ?>><a href="<?php echo DETAILS; ?>"><i class="icon-search icon-white"></i> Details</a></li>
+				<li<?php is_active('cgminer'); ?>><a href="<?php echo CGMINER; ?>"><i class="icon-search icon-cog"></i> CGMiner</a></li>
 				<li<?php is_active('services'); ?>><a href="<?php echo SERVICES; ?>"><i class="icon-cog icon-white"></i> Services</a></li>
 				<li<?php is_active('disks'); ?>><a href="<?php echo DISKS; ?>"><i class="icon-disks icon-white"></i> Disks</a></li>
 			  </ul>

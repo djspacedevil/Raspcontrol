@@ -21,12 +21,14 @@ if ($rewriting) {
   define('DETAILS', './details');
   define('SERVICES', './services');
   define('DISKS', './disks');
+  define('CGMINER', './cgminer');
 }
 else {
   define('LOGOUT', './login.php?logout');
   define('DETAILS', './?page=details');
   define('SERVICES', './?page=services');
   define('DISKS', './?page=disks');
+  define('CGMINER', './?page=cgminer');
 }
 
 ?>

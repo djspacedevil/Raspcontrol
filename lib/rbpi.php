@@ -29,31 +29,20 @@ class Rbpi {
   }
 
   public static function externalIp() {
-      $ip = self::loadUrl('http://whatismyip.akamai.com');
-      if(filter_var($ip, FILTER_VALIDATE_IP) === false)
-          $ip = self::loadUrl('http://ipecho.net/plain');
-      if(filter_var($ip, FILTER_VALIDATE_IP) === false)
-          return 'Unavailable';
-      return $ip;
+    if (!function_exists('file_get_contents'))
+      return 'Unavailable';
+    $ip_json = file_get_contents('http://pv.sohu.com/cityjson?ie=utf-8');
+    if ($ip_json==FALSE)
+      return 'Unavailable';
+    $ip_json = trim($ip_json);
+    $ip_json = substr($ip_json, 19);
+    $ip_json = substr($ip_json, 0, -1);
+    $ip_arr = json_decode($ip_json,true);
+    return $ip_arr['cip'];
   }
 
   public static function webServer() {
     return$_SERVER['SERVER_SOFTWARE'];
-  }
-  
-  protected static function loadUrl($url){
-      if(function_exists('curl_init')){
-          $curl = curl_init();
-          curl_setopt($curl, CURLOPT_URL, $url);
-          curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-          $content = curl_exec($curl);
-          curl_close($curl);
-          return trim($content);
-      }elseif(function_exists('file_get_contents')){
-          return trim(file_get_contents($url));
-      }else{
-          return false;
-      }
   }
 
 }
