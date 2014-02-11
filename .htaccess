@@ -1,3 +1,10 @@
+#Local Area Network Access
+#<Limit GET POST PUT>
+#Order Deny,Allow
+#Deny from all
+#Allow from 192.168.0.1/24
+#</Limit>
+
 # To enable URL rewriting, please uncomment the 3 last lines 
 # 
 # Ensure you have done every other steps described on

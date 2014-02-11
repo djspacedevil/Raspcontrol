@@ -43,6 +43,14 @@ $page = file_exists($page) ? $page : 'pages'. DIRECTORY_SEPARATOR .'404.php';
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen" />
     <link href="css/bootstrap-responsive.min.css" rel="stylesheet" />
     <link href="css/raspcontrol.css" rel="stylesheet" media="screen" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="https://raw.github.com/DmitryBaranovskiy/raphael/300aa589f5a0ba7fce667cd62c7cdda0bd5ad904/raphael-min.js"></script>
+	<script src="/morris/morris.js"></script>
+	<script src="/morris/lib/prettify.js"></script>
+	<script src="/morris/lib/example.js"></script>
+	<link rel="stylesheet" href="lib/example.css">
+	<link rel="stylesheet" href="lib/prettify.css">
+	<link rel="stylesheet" href="/morris/morris.css">
   </head>
 
   <body>
@@ -69,7 +77,7 @@ $page = file_exists($page) ? $page : 'pages'. DIRECTORY_SEPARATOR .'404.php';
 			  <ul class="nav">
 				<li<?php is_active('home'); ?>><a href="<?php echo INDEX; ?>"><i class="icon-home icon-white"></i> Home</a></li>
 				<li<?php is_active('details'); ?>><a href="<?php echo DETAILS; ?>"><i class="icon-search icon-white"></i> Details</a></li>
-				<li<?php is_active('cgminer'); ?>><a href="<?php echo CGMINER; ?>"><i class="icon-search icon-cog"></i> CGMiner</a></li>
+				<li<?php is_active('cgminer'); ?>><a href="<?php echo CGMINER; ?>"><i class="icon-search icon-cog"></i> Miner</a></li>
 				<li<?php is_active('services'); ?>><a href="<?php echo SERVICES; ?>"><i class="icon-cog icon-white"></i> Services</a></li>
 				<li<?php is_active('disks'); ?>><a href="<?php echo DISKS; ?>"><i class="icon-disks icon-white"></i> Disks</a></li>
 			  </ul>
@@ -100,8 +108,9 @@ $page = file_exists($page) ? $page : 'pages'. DIRECTORY_SEPARATOR .'404.php';
 
     <footer>
       <div class="container">
-        <p>Powered by <a href="https://github.com/Bioshox/Raspcontrol">Raspcontrol</a>.</p>
-        <p>Sources are available on <a href="https://github.com/Bioshox/Raspcontrol">Github</a>.</p>
+        <p>Powered by <a href="http://sven-goessling">Sven Goessling</a> and <a href="https://github.com/Bioshox/Raspcontrol">Raspcontrol</a>.</p>
+        <p>Sources are available on <a href="https://github.com/djspacedevil/Raspcontrol">Github</a>.</p>
+		<p>Donation BTC: 1LvETe6uTP64hK3UR3oSAdzT5ZjLnttqBm  or  DEM: NWtFftChrx28mvYgqfopmDejxoHiZmAK7u</p>
       </div>
     </footer>
 

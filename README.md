@@ -12,6 +12,7 @@ Love Raspcontrol? The origional author [@imjacobclark](http://twitter.com/imjaco
 ## Installation
 
 __The [Installation Guide](https://github.com/Bioshox/Raspcontrol/wiki/Installation-Guide) in now hosted on the wiki.__  
+German Installation Guide: (http://sven-goessling.de/12/01/2014/raspcontrol-cgminer-auf-dem-raspberry-pi-11-01-14/)
 For the moment, you need a web server (like Apache) installed on your Raspberry Pi.
 
 
@@ -33,3 +34,15 @@ Please follow instructions described on the wiki page [Enable URL Rewriting](htt
 
 __Note:__ It's not necessary to enable URL Rewriting to use Raspcontrol.
 
+## Cronjob
+
+if you want a automatic update of the cgminer static's you need a cron job.
+
+open /etc/crontab
+Insert: 
+#CG-Miner Stats
+0  *	* * *	www-data	php /var/www/functions/cron_job.php
+
+open /etc/rc.local
+Insert:
+php /var/www/functions/cron_job.php new

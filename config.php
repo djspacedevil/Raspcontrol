@@ -12,6 +12,14 @@ $rewriting = false;
  * Do NOT change the following lines
  */
 error_reporting(0);
+
+/* SQLite Connection */
+include_once('functions/sqlite_con_run.php');
+$SQLITEdb = "/var/www/sq_db/cgminer";
+
+$db = db_con($SQLITEdb);
+/* SQLite Connection */
+
 define('INDEX', './');
 define('LOGIN', 'login.php');
 define('FILE_PASS', '/etc/raspcontrol/database.aptmnt');
