@@ -1,7 +1,7 @@
 <?php
 /********************************************************************
 *			   phpLite - SQLite Connection Script					*
-*				   Author: Sven Gˆssling							*
+*				   Author: Sven G√∂ssling							*
 *				  Site: Sven-Goessling.de							*
 *																	*
 *						Version: 1.0.0								*
@@ -74,7 +74,7 @@ $query = $db->query("INSERT INTO `share_statistics` (`total_shares`,
 												)") OR die ('Error SQL 1');
 
 echo 'OK' . PHP_EOL;
-//Entferne alle Eintr‰ge ‰lter als 2 Tage
+//Entferne alle Eintr√§ge √§lter als 2 Tage
 $localtime = time();
 $removeold = $localtime - (60*60*24*2);
 echo date ('H:i:s:u - d.m.y', time()).' - REMOVE OLD DATA: ';
