@@ -23,7 +23,7 @@ $pools = $cgminer->pools();
 var timestamp_data = [
 <?php
 	$query = $db->query("SELECT * FROM (SELECT * FROM `share_statistics` ORDER BY `id` DESC LIMIT 24) tmp ORDER BY tmp.id ASC");
-	$periode = '{"period": '.time().'000, "hashrate": '.$hashrate['Average'].', "shares": '.($hashrate['Accepted']-$result['total_shares']).', "rejected": '.($hashrate['Rejected']-$result['total_rejected']).'}';
+	$periode = '{"period": '.time().'000, "hashrate": '.$hashrate['Average'].', "shares": 0, "rejected": '.($hashrate['Rejected']-$result['total_rejected']).'}';
 	$share_count = 0;
 	$rejected = 0;
 	$interval_count = 0;
