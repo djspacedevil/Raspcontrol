@@ -9,7 +9,7 @@ $shares = $cgminer->shares();
 $devs = $cgminer->devices();
 $pools = $cgminer->pools();
 //$switchpool = $cgminer->switchpool(0);
-//$stats = $cgminer->stats();
+$stats = $cgminer->stats();
 ?>
 
 <div class="container details">
@@ -23,14 +23,14 @@ $pools = $cgminer->pools();
 var timestamp_data = [
 <?php
 	$query = $db->query("SELECT * FROM (SELECT * FROM `share_statistics` ORDER BY `id` DESC LIMIT 24) tmp ORDER BY tmp.id ASC");
-	$periode = '{"period": '.time().'000, "hashrate": '.$hashrate['Average'].', "shares": '.($hashrate['Accepted']-$result['total_shares']).', "rejected": '.($hashrate['Rejected']-$result['total_rejected']).'}';
+	$periode = '{"period": '.time().'000, "hashrate": '.$hashrate['Average'].'}';
 	$share_count = 0;
 	$rejected = 0;
 	$interval_count = 0;
 
 	$counter = 0; //Interval Count in Min.
 	while ($result = $query->fetch(PDO::FETCH_ASSOC)) {
-	$share_count += $result['time_shares'];
+	$share_count += ($result['time_shares']*$result['share_difficulty']);
 	$rejected += $result['time_rejected'];
 		if ($counter >= $interval_count) {
 			if ($periode != "") {$periode .= ",";} 
