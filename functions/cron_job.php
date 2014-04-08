@@ -1,7 +1,7 @@
 <?php
 /********************************************************************
 *			   phpLite - SQLite Connection Script					*
-*				   Author: Sven Gˆssling							*
+*				   Author: Sven G√∂ssling							*
 *				  Site: Sven-Goessling.de							*
 *																	*
 *						Version: 1.0.0								*
@@ -34,6 +34,13 @@ $pools = $cgminer->pools();
 //$switchpool = $cgminer->switchpool(0);
 //$stats = $cgminer->stats();
 
+	$share_difficulty = 0;
+	foreach ($pools as $pool) {
+		if ($pool->{'Stratum Active'} == 1) {
+			$share_difficulty = $pool->{'Last Share Difficulty'};
+		}
+	}
+
 	if (isset($argv['1']) && $argv['1'] == 'new') {
 		echo '-DELETE-'.PHP_EOL;
 		$query = $db->query("DELETE FROM `share_statistics`");	
@@ -53,7 +60,8 @@ $query = $db->query("INSERT INTO `share_statistics` (`total_shares`,
 												   `hash`,
 												   `time`,
 												   `time_shares`,
-												   `time_rejected`
+												   `time_rejected`,
+												   `share_difficulty`
 												) VALUES (
 												   ".$hashrate['Accepted'].",
 												   ".$hashrate['Rejected'].",
@@ -61,11 +69,12 @@ $query = $db->query("INSERT INTO `share_statistics` (`total_shares`,
 												   ".$hashrate['Average'].",
 												   '".time()."',
 												   '".$time_shares."',
-												   '".$time_rejected."'
+												   '".$time_rejected."',
+												   ".$share_difficulty."
 												)") OR die ('Error SQL 1');
 
 echo 'OK' . PHP_EOL;
-//Entferne alle Eintr‰ge ‰lter als 2 Tage
+//Entferne alle Eintr√§ge √§lter als 2 Tage
 $localtime = time();
 $removeold = $localtime - (60*60*24*2);
 echo date ('H:i:s:u - d.m.y', time()).' - REMOVE OLD DATA: ';
